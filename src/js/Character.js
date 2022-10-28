@@ -1,9 +1,6 @@
 export default class Character {
-    constructor(params) {
-        const {
-            name, type, health = 100, level = 1, attack, defence,
-        } = params;
-        const types = [
+    constructor(name, type) {
+        const possibleTypes = [
             "Bowman",
             "Swordsman",
             "Magician",
@@ -16,16 +13,14 @@ export default class Character {
             throw new Error("Имя персонажа не соответствует требованиям: строка, min - 2 символа, max - 10");
         }
 
-        if (!types.includes(type) && type !== "undefined") {
+        if (!possibleTypes.includes(type) && type !== "undefined") {
             throw new Error("Тип персонажа не соответствует существующим");
         }
 
         this.name = name;
         this.type = type;
-        this.health = health;
-        this.level = level;
-        this.attack = attack;
-        this.defence = defence;
+        this.health = 100;
+        this.level = 1;
     }
 
     levelUp() {
